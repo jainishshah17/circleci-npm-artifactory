@@ -4,7 +4,7 @@
   "description": "Circle CI/CD With Artifactory",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/test.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,11 @@
   },
   "homepage": "https://github.com/jainishshah17/circleci-npm-artifactory#readme",
   "dependencies": {
-    "color": "^1.0.3"
+    "colors": "latest",
+    "assert": "latest"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "directories": {
+    "test": "test"
+  }
 }
