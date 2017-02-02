@@ -3,10 +3,13 @@ machine:
     version: 5.0.0
 dependencies:
   pre:
-    - echo -e "$ARTIFACTORY_USER\n$ARTIFACTORY_PASS\n$ARTIFACTORY_EMAIL" | npm login
+    - npm config set registry https://gcartifactory-us.jfrog.info/artifactory/api/npm/circleci-npm
+    - curl -u$ARTIFACTIRY_USERNAME:$ARTIFACTORY_PASSWORD https://gcartifactory-us.jfrog.info/artifactory/api/npm/auth >> ~/.npmrc
     - npm install
 deployment:
   master:
     branch: master
     commands:
-      - npm publish --registry https://gcartifactory-us.jfrog.info/artifactory/api/npm/circleci-npm-local
+      - npm config set registry https://gcartifactory-us.jfrog.info/artifactory/api/npm/circleci-npm
+      - curl -u$ARTIFACTIRY_USERNAME:$ARTIFACTORY_PASSWORD https://gcartifactory-us.jfrog.info/artifactory/api/npm/auth >> ~/.npmrc
+      - npm publish --registry https://gcartifactory-us.jfrog.info/artifactory/api/npm/circleci-npm
