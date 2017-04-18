@@ -1,12 +1,12 @@
 # circleci-npm-artifactory
 
 [![CircleCI](https://circleci.com/gh/jainishshah17/circleci-npm-artifactory.svg?style=svg)](https://circleci.com/gh/jainishshah17/circleci-npm-artifactory)
-
+## Store build information and build artifacts to JFrog Artifactory
 ## Artifactory Integration with CircleCI
 
-`To make this integration  work you will need to have running Artifactory-pro/Artifactory SAAS/Artifactory Enterprise which is acccessible form outside.`
+`To make this integration  work you will need to have running Artifactory-pro/Artifactory SAAS.`
 
-####NPM Example
+#### NPM Example
 This is a sample project that resolve a dependency from Artifactory and deploys the build artifacts to Artifactory.
 
 Step 1:
