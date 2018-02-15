@@ -11,6 +11,7 @@ deployment:
   master:
     branch: master
     commands:
+      - npm cache clean --force
       - ./jfrog rt npmi npm-virtual --build-name=circleci-npm-artifactory --build-number=$CIRCLE_BUILD_NUM
       - ./jfrog rt bce circleci-npm-artifactory $CIRCLE_BUILD_NUM
       - ./jfrog rt npmp npm-virtual --build-name=circleci-npm-artifactory --build-number=$CIRCLE_BUILD_NUM
