@@ -1,6 +1,6 @@
 machine:
   node:
-    version: 5.0.0
+    version: 6.13.0
 dependencies:
   pre:
     - wget https://dl.bintray.com/jfrog/jfrog-cli-go/1.14.0/jfrog-cli-linux-amd64/jfrog
