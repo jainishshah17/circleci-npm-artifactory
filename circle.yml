@@ -3,11 +3,15 @@ machine:
     version: 5.0.0
 dependencies:
   pre:
-    - npm config set registry https://gcartifactory-us.jfrog.info/artifactory/api/npm/circleci-npm
-    - curl -u$ARTIFACTIRY_USERNAME:$ARTIFACTORY_PASSWORD https://gcartifactory-us.jfrog.info/artifactory/api/npm/auth >> ~/.npmrc
-    - npm install
+    - wget https://dl.bintray.com/jfrog/jfrog-cli-go/1.14.0/jfrog-cli-linux-amd64/jfrog
+    - chmod +x jfrog
+    - ./jfrog rt config --url $ARTIFACTORY_URL --user $ARTIFACTORY_USER --apikey $ARTIFACTORY_PASSWORD --interactive false
+
 deployment:
   master:
     branch: master
     commands:
-      - npm publish --registry https://gcartifactory-us.jfrog.info/artifactory/api/npm/circleci-npm
+      - ./jfrog rt npmi npm --build-name=circleci-npmiartifactory --build-number=$CIRCLE_BUILD_NUM
+      - ./jfrog rt bce circleci-npm-artifactory $CIRCLE_BUILD_NUM
+      - ./jfrog rt npmp npm --build-name=circleci-npm-artifactory --build-number=$CIRCLE_BUILD_NUM
+      - ./jfrog rt bp circleci-npm-artifactory $CIRCLE_BUILD_NUM
