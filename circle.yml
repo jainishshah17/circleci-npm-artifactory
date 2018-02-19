@@ -3,8 +3,9 @@ machine:
     version: 8.9.0
 dependencies:
   pre:
-    - wget https://dl.bintray.com/jfrog/jfrog-cli-go/1.14.0/jfrog-cli-linux-amd64/jfrog
-    - chmod +x jfrog
+    # Install JFrog CLI
+    - curl -fL https://getcli.jfrog.io | sh
+    # Configure Artifactory instance with JFrog CLI
     - ./jfrog rt config --url $ARTIFACTORY_URL --user $ARTIFACTORY_USER --apikey $ARTIFACTORY_PASSWORD --interactive false
 
 deployment:
