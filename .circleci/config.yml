@@ -29,8 +29,6 @@ jobs:
       - run: curl -fL https://getcli.jfrog.io | sh
       # Configure Artifactory instance with JFrog CLI
       - run: ./jfrog rt config --url $ARTIFACTORY_URL --user $ARTIFACTORY_USER --apikey $ARTIFACTORY_PASSWORD --interactive false
-      # Login to Artifactory docker registry
-      - run: docker login -u $ARTIFACTORY_USER -p $ARTIFACTORY_PASSWORD $ARTIFACTORY_DOCKER_REPOSITORY
       # Run NPM install command to pull dependency from Artifactory NPM registry
       - run: ./jfrog rt npmi $NPM_DEV_REPO --build-name=$CIRCLE_JOB --build-number=$CIRCLE_BUILD_NUM
       # Test NPM package
